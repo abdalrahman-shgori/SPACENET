@@ -60,13 +60,13 @@ const FeaturedProducts = () => {
     <Box
       sx={{
         paddingLeft: {
-          xs: "20px",
+          xs: "30px",
           sm: "80px",
           md: "100px",
           lg: "300px"
         },
         paddingRight: {
-          xs: "20px",
+          xs: "30px",
           sm: "80px",
           md: "100px",
           lg: "300px"
