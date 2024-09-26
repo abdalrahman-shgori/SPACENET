@@ -80,7 +80,6 @@ const SvgLogoNavComponent = (props) => (
        cy="100"
        r="80"
        className="cls-2"
-       
        strokeWidth={1}
       d="m16.354 17.5 7.146-7.146 7.146 7.146-7.146 7.146-7.146-7.146Z"
     />

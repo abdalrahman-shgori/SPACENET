@@ -28,7 +28,7 @@ const SvgFlowerComponent = (props) => {
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
             transition={{
-              duration: 2,
+              duration: 5,
               ease: "easeInOut",
             }}
           />
