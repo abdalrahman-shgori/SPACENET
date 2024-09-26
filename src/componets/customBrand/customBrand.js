@@ -40,7 +40,7 @@ const BackgroundImageWithText = () => {
             <motion.div
                 initial={{ opacity: 0, x: -100 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 1 }}
+                transition={{ duration: 1 , delay:0.5 }}
             >
                 <Box
                     sx={{
@@ -132,7 +132,7 @@ const BackgroundImageWithText = () => {
                 alt="Zara"
                 initial={{ opacity: 0, x: 100 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 1 }}
+                transition={{ duration: 1 ,delay:0.5 }}
                 style={{
                     position: 'absolute',
                     top: '10px',
