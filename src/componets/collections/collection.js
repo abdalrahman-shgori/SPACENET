@@ -187,6 +187,7 @@ const Collection = () => {
                         }
                     }}>
                     <Box
+                    loading="lazy"
                         component="img"
                         src={MainImage}
                         alt="Main"

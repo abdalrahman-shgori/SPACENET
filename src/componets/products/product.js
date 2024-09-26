@@ -10,7 +10,29 @@ const FeaturedProducts = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [hoveredItem, setHoveredItem] = useState(null);
+  const [visibleItems, setVisibleItems] = useState(new Set());
 
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const index = entry.target.getAttribute('data-index');
+                setVisibleItems(prev => new Set(prev).add(index));
+                observer.unobserve(entry.target);
+            }
+        });
+    },{threshold:0.1});
+
+    const items = document.querySelectorAll('.product-item');
+    items.forEach((item, index) => {
+        item.setAttribute('data-index', index);
+        observer.observe(item);
+    });
+
+    return () => {
+        observer.disconnect();
+    };
+}, [products]);
   useEffect(() => {
     const fetchFeaturedProducts = async () => {
       try {
@@ -45,7 +67,7 @@ const FeaturedProducts = () => {
       </Typography>
     );
   }
-
+ 
   const settings = {
     dots: true,
     infinite: true,
@@ -84,6 +106,7 @@ const FeaturedProducts = () => {
           {products.map((item) => (
             <Box key={item.id}>
               <motion.div
+
                 initial={{ scale: 1 }}
                 whileHover={{ scale: 1.1 }} 
                 onHoverStart={() => setHoveredItem(item.id)}
@@ -150,75 +173,80 @@ const FeaturedProducts = () => {
           ))}
         </Slider>
       </Box>
-
       <Box sx={{ display: { xs: 'none', md: 'flex' }, flexWrap: 'wrap', justifyContent: 'center', gap: '20px' }}>
-        {products.map((item) => (
-          <motion.div
-            key={item.id}
-            initial={{ scale: 1 }}
-            whileHover={{ scale: 1.1 }} 
-            onHoverStart={() => setHoveredItem(item.id)}
-            onHoverEnd={() => setHoveredItem(null)}
-            style={{
-              filter: hoveredItem && hoveredItem !== item.id ? 'blur(2px)' : 'none',
-              transition: 'filter 0.3s ease'
+  {products.map((item, index) => (
+    <motion.div
+    className="product-item"
+      key={item.id}
+      initial={{ rotateY: 90 }}  // Start with a rotated state
+      animate={visibleItems.has(index.toString())?{
+        rotateY: 0
+      }:{}}   // Animate to the front-facing state
+      transition={{ duration: 0.7, delay: 0.1 }} // Delay each item's flip based on its index
+      whileHover={{ scale: 1.1 }} 
+      onHoverStart={() => setHoveredItem(item.id)}
+      onHoverEnd={() => setHoveredItem(null)}
+      style={{
+        filter: hoveredItem && hoveredItem !== item.id ? 'blur(2px)' : 'none',
+        transition: 'filter 0.3s ease',
+      }}
+    >
+      <Card sx={{ width: 290, height: 478, position: 'relative', border: 'none', boxShadow: 'none' }}>
+        <Typography
+          variant="caption"
+          sx={{
+            position: 'absolute',
+            top: '5px',
+            left: '5px',
+            color: 'white',
+            padding: '2px 5px',
+            borderRadius: '3px',
+            backgroundColor: (index) % 2 ? '#FF6F61' : '#1E2832',
+          }}
+        >
+                  {(index) % 2 ? 'Hot' : 'Sale'}
+</Typography>
+        <CardMedia
+          component="img"
+          height="290"
+          image={item.preview.media.url}
+          alt={item.arabic}
+          sx={{ objectFit: 'contain', border: 'none' }}
+        />
+        <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <Typography
+            sx={{
+              paddingLeft: '10px',
+              paddingRight: '10px',
+              marginTop: '10px',
+              fontSize: '16px',
+              fontWeight: '600',
+              lineHeight: '21.7px',
+              textAlign: 'justify',
+              display: '-webkit-box',
+              overflow: 'hidden',
+              WebkitBoxOrient: 'vertical',
+              WebkitLineClamp: hoveredItem === item.id ? 'none' : 2,
+              maxHeight: hoveredItem === item.id ? 'none' : '42px',
+              transition: 'max-height 0.3s ease',
             }}
           >
-            <Card sx={{ width: 290, height: 478, position: 'relative', border: 'none', boxShadow: 'none' }}>
-              <Typography
-                variant="caption"
-                sx={{
-                  position: 'absolute',
-                  top: '5px',
-                  left: '5px',
-                  color: 'white',
-                  padding: '2px 5px',
-                  borderRadius: '3px',
-                  backgroundColor: item.hot ? 'red' : 'green'
-                }}
-              >
-                {item.hot ? 'Hot' : 'Sale'}
-              </Typography>
-              <CardMedia
-                component="img"
-                height="290"
-                image={item.preview.media.url}
-                alt={item.arabic}
-                sx={{ objectFit: 'contain', border: 'none' }}
-              />
-              <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <Typography
-                  sx={{
-                    paddingLeft: '10px',
-                    paddingRight: '10px',
-                    marginTop: '10px',
-                    fontSize: '16px',
-                    fontWeight: '600',
-                    lineHeight: '21.7px',
-                    textAlign: 'justify',
-                    display: '-webkit-box',
-                    overflow: 'hidden',
-                    WebkitBoxOrient: 'vertical',
-                    WebkitLineClamp: hoveredItem === item.id ? 'none' : 2, 
-                    maxHeight: hoveredItem === item.id ? 'none' : '42px', 
-                    transition: 'max-height 0.3s ease'
-                  }}
-                >
-                  {item.arabic}
-                </Typography>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: '10px' }}>
-                  <Typography sx={{ color: '#000000', fontSize: '16px', lineHeight: '21px', fontWeight: '400', opacity: '0.5' }}>
-                    Perfume
-                  </Typography>
-                  <Typography sx={{ color: '#000000', fontSize: '16px', lineHeight: '21px', fontWeight: '600' }}>
-                    {item.price.price} $
-                  </Typography>
-                </Box>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
-      </Box>
+            {item.arabic}
+          </Typography>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: '10px' }}>
+            <Typography sx={{ color: '#000000', fontSize: '16px', lineHeight: '21px', fontWeight: '400', opacity: '0.5' }}>
+              Perfume
+            </Typography>
+            <Typography sx={{ color: '#000000', fontSize: '16px', lineHeight: '21px', fontWeight: '600' }}>
+              {item.price.price} $
+            </Typography>
+          </Box>
+        </CardContent>
+      </Card>
+    </motion.div>
+  ))}
+</Box>
+
     </Box>
   );
 };

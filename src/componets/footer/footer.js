@@ -165,23 +165,22 @@ const Footer = () => {
 
                 }}
             >
-                {/* Left Section: Copyright Text */}
-                <Box 
-                sx={{ 
-                     paddingLeft:{
-                        lg:"20px",
-                        md:"20px",
-                        sm:"10px",
-                        xs:"10px"
-                     },
-                     paddingRight:{
-                        lg:"20px",
-                        md:"20px",
-                        sm:"10px",
-                        xs:"10px"
-                     },
-                     
-                      }} >
+                <Box
+                    sx={{
+                        paddingLeft: {
+                            lg: "20px",
+                            md: "20px",
+                            sm: "10px",
+                            xs: "10px"
+                        },
+                        paddingRight: {
+                            lg: "20px",
+                            md: "20px",
+                            sm: "10px",
+                            xs: "10px"
+                        },
+
+                    }} >
                     <Typography variant="body2"
                         sx={{
                             color: '#FFFFFF',
@@ -209,16 +208,16 @@ const Footer = () => {
                         }} />
                 </Box>
 
-                {/* Right Section: Scroll to Top */}
-                <Box sx={{textAlign: 'right', 
-  paddingRight:{
-    lg:"20px",
-    md:"20px",
-    sm:"10px",
-    xs:"10px"
- },
+                <Box sx={{
+                    textAlign: 'right',
+                    paddingRight: {
+                        lg: "20px",
+                        md: "20px",
+                        sm: "10px",
+                        xs: "10px"
+                    },
 
-                 }}>
+                }}>
                     <IconButton onClick={scrollToTop} sx={{ color: '#1976d2' }}>
                         <Typography variant="body2"
                             sx={{

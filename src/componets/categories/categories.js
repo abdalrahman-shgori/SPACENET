@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Box, Typography, CircularProgress, Grid, useTheme } from '@mui/material';
+import { Box, Typography, CircularProgress, Grid } from '@mui/material';
 import { motion } from 'framer-motion';
 
 const Categories = () => {
@@ -69,52 +69,44 @@ const Categories = () => {
     return (
         <Box sx={{
             background: "#FFFFFF",
-            paddingLeft: {
-                xs: "20px",
-                sm: "80px",
-                md: "100px",
-                lg: "300px"
-            },
-            paddingRight: {
-                xs: "20px",
-                sm: "80px",
-                md: "100px",
-                lg: "300px"
-            },
-            paddingTop: {
-                lg: "73px",
-                md: "73px",
-                sm: "40px",
-                xs: "24px"
-            }
+            paddingLeft: { xs: "20px", sm: "80px", md: "100px", lg: "300px" },
+            paddingRight: { xs: "20px", sm: "80px", md: "100px", lg: "300px" },
+            paddingTop: { lg: "73px", md: "73px", sm: "40px", xs: "24px" }
         }}>
             <Typography
                 align="left"
                 sx={{
                     marginBottom: '20px',
                     color: "#1E2832",
-                    fontSize: {
-                        lg: "32px",
-                        md: "32px",
-                        sm: "24px",
-                        xs: "24px"
-                    },
+                    fontSize: { lg: "32px", md: "32px", sm: "24px", xs: "24px" },
                     fontWeight: "600",
                     lineHeight: "44px",
                     fontFamily: "var(--English-font)",
                 }}>
                 Categories
             </Typography>
-            <Grid container justifyContent="center" sx={{ gap: { lg: "100px", md: "100px", sm: "0px", xs: "0px" } }}>
+            <Grid container justifyContent="center"
+             sx={{
+                 gap: { lg: "100px", md: "100px", sm: "0px", xs: "0px" },
+                 paddingBottom:"10px"
+                  }}>
                 {categories.map((category, index) => (
                     <Grid item xs={6} sm={4} md={3} lg={2} key={category.id}>
                         <motion.div
                             className="category-item"
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={visibleItems.has(index.toString()) ?
-                                { opacity: 1, y: 0, transition: { duration: 0.5, type: "spring", stiffness: 70 } } :
-                                { opacity: 0, y: 50 }
-                            }
+                            initial={{ opacity: 0, y: 50, rotate: -5 }}
+                            animate={visibleItems.has(index.toString()) ? {
+                                opacity: 1,
+                                y: 0,
+                                rotate: 0,
+                                transition: {
+                                    duration: 0.6,
+                                    type: "spring",
+                                    stiffness: 70,
+                                    delay: index * 0.1
+                                }
+                            } : { opacity: 0, y: 50, rotate: -5 }}
+                            whileHover={{ scale: 1.1}}
                         >
                             <Box
                                 sx={{
@@ -123,9 +115,10 @@ const Categories = () => {
                                     alignItems: 'center',
                                     textAlign: 'center',
                                     justifyContent: 'center',
+                                    cursor: 'pointer',
                                 }}
                             >
-                                <img
+                                <motion.img
                                     src={category.img}
                                     alt={category.arabic}
                                     style={{
@@ -134,6 +127,7 @@ const Categories = () => {
                                         objectFit: 'cover',
                                         borderRadius: '8px',
                                     }}
+                                    whileHover={{ rotate: 5 }}
                                 />
                                 <Typography
                                     sx={{
