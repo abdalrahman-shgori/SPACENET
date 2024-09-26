@@ -97,13 +97,13 @@ const FeaturedProducts = () => {
                 background: "#FFFFFF"
             }}
         >
-            <Typography variant="h4" align="center" sx={{ marginBottom: '20px' }}>
+            <Typography variant="h4" align="center" sx={{ paddingBottom: '20px' }}>
                 Featured Products
             </Typography>
 
             <Box sx={{ display: { xs: 'block', md: 'none' } }}>
                 <Slider {...settings}>
-                    {products.map((item) => (
+                    {products.map((item, index) => (
                         <Box key={item.id}>
                             <motion.div
 
@@ -126,10 +126,10 @@ const FeaturedProducts = () => {
                                             color: 'white',
                                             padding: '2px 5px',
                                             borderRadius: '3px',
-                                            backgroundColor: item.hot ? 'red' : 'green'
+                                            backgroundColor: (index) % 2 ? '#FF6F61' : '#1E2832'
                                         }}
                                     >
-                                        {item.hot ? 'Hot' : 'Sale'}
+                                        {index % 2 ? 'Hot' : 'Sale'}
                                     </Typography>
                                     <CardMedia
                                         component="img"
