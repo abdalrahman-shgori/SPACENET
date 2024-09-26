@@ -15,8 +15,8 @@ const Collection = () => {
     const [headerText, setHeaderText] = useState('');
     const [paragraphText, setParagraphText] = useState('');
 
-    const fullHeaderText = "Collections";
-    const fullParagraphText = "you can explore and shop many different collections from various brands here.";
+    const fullHeaderText = " collections";
+    const fullParagraphText="y ou can explore and shop many different collections from various brands here.";
     useEffect(() => {
         let index = 0;
         const headerIntervalId = setInterval(() => {
