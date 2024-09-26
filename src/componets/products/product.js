@@ -178,11 +178,11 @@ const FeaturedProducts = () => {
                     <motion.div
                         className="product-item"
                         key={item.id}
-                        initial={{ rotateY: 90 }}  // Start with a rotated state
+                        initial={{ rotateY: 90 }}  
                         animate={visibleItems.has(index.toString()) ? {
                             rotateY: 0
-                        } : {}}   // Animate to the front-facing state
-                        transition={{ duration: 0.7, delay: 0.1 }} // Delay each item's flip based on its index
+                        } : {}}   
+                        transition={{ duration: 0.7, delay: 0.1 }} 
                         whileHover={{ scale: 1.1 }}
                         onHoverStart={() => setHoveredItem(item.id)}
                         onHoverEnd={() => setHoveredItem(null)}
