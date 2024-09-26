@@ -33,7 +33,7 @@ const AnimatedSection = ({ children }) => {
     }, []);
 
     return (
-       
+
         <motion.div
             ref={ref}
             initial="hidden"

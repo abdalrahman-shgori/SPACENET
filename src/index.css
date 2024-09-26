@@ -11,33 +11,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-/* In your App.css or a separate CSS file */
 
 ::-webkit-scrollbar {
-  width: 12px; /* Width of the scrollbar */
+  width: 12px; 
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Color of the scrollbar track */
-  border-radius: 10px; /* Rounded corners for track */
+  background: #f1f1f1; 
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888; /* Color of the scrollbar thumb */
-  border-radius: 10px; /* Rounded corners for thumb */
+  background: #888;
+  border-radius: 10px; 
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Color of the scrollbar thumb on hover */
+  background: #555; 
 }
 
 /* For Firefox */
 * {
-  scrollbar-width: thin; /* Thin scrollbar */
-  scrollbar-color: #888 #f1f1f1; /* Thumb color and track color */
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
 }
 
-/* For Internet Explorer and Edge */
 body {
-  -ms-overflow-style: -ms-autohiding-scrollbar; /* Auto-hiding scrollbar */
+  -ms-overflow-style: -ms-autohiding-scrollbar; 
 }

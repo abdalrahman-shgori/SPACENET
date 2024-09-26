@@ -3,8 +3,6 @@ import { Box, Button, Grid, Typography } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { motion } from 'framer-motion';
-import LeftBackgroundImage from '../../assets/images/Frame.svg';
-import RightBackgroundImage from '../../assets/images/Frame1.svg';
 import MainImage from '../../assets/images/image-product.svg';
 import ShopIcon from "../../assets/images/shopIcon.svg";
 import SvgFlowerComponent from '../../assets/animationComponents/flower';

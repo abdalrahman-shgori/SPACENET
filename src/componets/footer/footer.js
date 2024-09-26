@@ -198,15 +198,24 @@ const Footer = () => {
                         © 2022 Coral, Inc.
                     </Typography>
                 </Box>
-
-                {/* Middle Section: Payment Logos */}
                 <Box sx={{ flex: 1, textAlign: 'center' }}>
-                    <img src={IconPayments} alt="Visa Logo"
-                        style={{
+                    <Box
+                        component="img"
+                        src={IconPayments}
+                        alt="Visa Logo"
+                        sx={{
                             width: '100%',
+                            maxWidth: {
+                                lg: '283px',
+                                md: '283px',
+                                sm: '100%',
+                                xs: '100%'
+                            },
                             marginRight: '10px'
-                        }} />
+                        }}
+                    />
                 </Box>
+
 
                 <Box sx={{
                     textAlign: 'right',
@@ -240,8 +249,6 @@ const Footer = () => {
                 </Box>
             </Box>
         </>
-
-
     );
 };
 
