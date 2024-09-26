@@ -92,7 +92,7 @@ const Navbar = () => {
           md: '100px',
           lg: '300px',
         },
-        backgroundColor: "#1E28320D"
+        backgroundColor: "#1E28320D",
       }}
     >
       <Toolbar
@@ -122,7 +122,7 @@ const Navbar = () => {
               backgroundColor: '#f1f1f1',
               borderRadius: '4px',
               padding: '5px 10px',
-              maxWidth: "120px",
+              maxWidth: "100px",
               width: "100%"
             }}
           >
@@ -139,7 +139,15 @@ const Navbar = () => {
           </motion.div>
         </Box>
 
-        <Typography variant="h6" sx={{ flexGrow: 1, textAlign: 'center' }}>
+        <Typography variant="h6" sx={{
+          flexGrow: 1, textAlign: 'center',
+          marginLeft: {
+            lg: "40px",
+            md: "40px",
+            sm: "unset",
+            xs: "unset"
+          }
+        }}>
           <SvgLogoNavComponent />
         </Typography>
 
@@ -150,7 +158,8 @@ const Navbar = () => {
               md: "flex",
               sm: isSearchOpen ? "none" : 'flex',
               xs: isSearchOpen ? "none" : 'flex'
-            }
+            },
+            marginLeft: "20px"
           }}
         >
           <motion.div
