@@ -20,19 +20,18 @@ const SvgLogoComponent = (props) => (
     <div
     className="logoOpacity"
     style={{
-        position: "absolute",
+    position: "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    
-        
     }}
     >
 <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={180}
-    height={34}
+    width={280}
+    height={84}
     fill="none"
+    viewBox="0 0 180 34" 
     {...props}
   >
     <motion.path

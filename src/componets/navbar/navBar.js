@@ -145,7 +145,13 @@ const Navbar = () => {
             lg: "40px",
             md: "40px",
             sm: "unset",
-            xs: "unset"
+            xs: "-20px"
+          },
+          marginTop:{
+            lg:"unset",
+            md:"unset",
+            sm:"10px",
+            xs:"10px"
           }
         }}>
           <SvgLogoNavComponent />
@@ -159,7 +165,7 @@ const Navbar = () => {
               sm: isSearchOpen ? "none" : 'flex',
               xs: isSearchOpen ? "none" : 'flex'
             },
-            marginLeft: "20px"
+            marginLeft: "6px"
           }}
         >
           <motion.div

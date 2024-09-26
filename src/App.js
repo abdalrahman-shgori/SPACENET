@@ -5,6 +5,7 @@ import Footer from './componets/footer/footer';
 import SvgLogoComponent from './assets/animationComponents/logoSvg';
 import AnimatedSection from './animatedSection';
 import LandingPage from './componets/landingPage/landingPage';
+import { Box } from '@mui/material';
 
 function App() {
   const [showSvg, setShowSvg] = useState(true);
@@ -20,7 +21,7 @@ function App() {
   return (
     <>
       {showSvg ? (
-        <SvgLogoComponent />
+        <SvgLogoComponent/>
       ) : (
         <>
           <AnimatedSection>
