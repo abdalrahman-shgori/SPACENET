@@ -1,0 +1,53 @@
+.cls-2 {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: animationLogo 10s  forwards; /* Increased animation duration to 10s */
+}
+
+@keyframes animationLogo {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  50% {
+    stroke-dashoffset: 500;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.cls-3 {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: animationLogo2 12s 1s forwards; /* Increased duration and delay */
+}
+
+@keyframes animationLogo2 {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  50% {
+    stroke-dashoffset: 500;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.Text {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: animationLogo3 4s 1.5s forwards; /* Increased duration and delay */
+}
+
+@keyframes animationLogo3 {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  50% {
+    stroke-dashoffset: 500;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}

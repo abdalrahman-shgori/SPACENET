@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "English";
+    src: url(../fontFamily/Roboto-Regular.ttf);
+}
+
+:root{
+    --English-font:'English';
+}
